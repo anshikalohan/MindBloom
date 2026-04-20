@@ -93,7 +93,7 @@ mindbloom/
 
 ### 1. Clone & navigate
 ```bash
-git clone https://github.com/yourname/mindbloom.git
+git clone https://github.com/anshikalohan/mindbloom.git
 cd mindbloom
 ```
 

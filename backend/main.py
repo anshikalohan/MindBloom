@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, moods, journal
 from database import connect_to_mongo, close_mongo_connection
+import os
 
 app = FastAPI(
     title="MindBloom API",
@@ -10,9 +11,17 @@ app = FastAPI(
 )
 
 # CORS - allow frontend dev server
+cors_origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+]
+if os.getenv("CORS_ORIGINS"):
+    cors_origins.extend(os.getenv("CORS_ORIGINS").split(","))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],
+    allow_origins=cors_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

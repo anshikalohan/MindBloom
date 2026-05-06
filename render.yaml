@@ -12,5 +12,7 @@ services:
         sync: false
       - key: DB_NAME
         value: "mindbloom"
+      - key: PYTHON_VERSION
+        value: "3.11"
       - key: SECRET_KEY
         generateValue: true
